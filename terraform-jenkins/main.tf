@@ -1,13 +1,13 @@
 resource "aws_instance" "web" {
-  ami                    = "ami-06c4be2792f419b7b"      #change ami id for different region
-  instance_type          = "t2.large"
-  key_name               = "aws-lab-keypair"              #change key name as per your setup
+  ami                    = "ami-06c4be2792f419b7b" #change ami id for different region -> this is ap-southeast-1 region
+  instance_type          = "t2.large"              #recommanded to use
+  key_name               = "jenkin"                #change keypair name as per your setup in AWS
   vpc_security_group_ids = [aws_security_group.Jenkins-VM-SG.id]
-  #subnet_id              = "subnet-0279333d80ef56ff8"
+  subnet_id              = "subnet-00eabc290d8805c8e" #change ur subnet id
   user_data              = templatefile("./install.sh", {})
 
   tags = {
-    Name = "Jenkins-SonarQube"
+    Name = "Jenkins-SonarQube" #any name you can given
   }
 
   root_block_device {
@@ -18,7 +18,7 @@ resource "aws_instance" "web" {
 resource "aws_security_group" "Jenkins-VM-SG" {
   name        = "Jenkins-VM-SG"
   description = "Allow TLS inbound traffic"
-  vpc_id      = "vpc-01c8d0de475ea797e"           ###change vpc id
+  vpc_id      = "vpc-0d1ab1e87bc0623b1" ###change vpc id
 
   ingress = [
     for port in [22, 80, 443, 8080, 9000, 3000] : {

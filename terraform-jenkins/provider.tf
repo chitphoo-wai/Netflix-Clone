@@ -1,3 +1,4 @@
+
 terraform {
   required_providers {
     aws = {
@@ -6,8 +7,9 @@ terraform {
     }
   }
 }
-
 # Configure the AWS Provider
 provider "aws" {
-  region = "ap-southeast-1"     #change region as per you requirement
+  region  = "ap-southeast-1" #change region as per you requirement
+  profile = "aws-team"       #add your cli profile *** important
 }
+ 

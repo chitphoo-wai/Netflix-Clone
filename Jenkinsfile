@@ -13,9 +13,9 @@ pipeline {
     environment {
         SCANNER_HOME = tool 'sonarqube-scanner'
         TRIVY_HOME = '/usr/bin'
-        REPO_URL = 'https://github.com/hlaingminpaing/Deploy-Netflix-Clone-on-Kubernetes.git'
+        REPO_URL = 'https://github.com/chitphoo-wai/Netflix-Clone.git'
         REPO_BRANCH = 'main'
-        DOCKER_IMAGE_NAME = 'hlaingminpaing/netflix'
+        DOCKER_IMAGE_NAME = 'chitphoo/netflix-clone'
         SONAR_PROJECT_NAME = 'Netflix'
         SONAR_PROJECT_KEY = 'Netflix'
         DOCKER_CREDENTIALS_ID = 'dockerhub'
